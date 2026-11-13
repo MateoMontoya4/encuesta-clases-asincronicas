@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encuesta: clases asincrónicas</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<div class="barra-progreso"><div id="progreso"></div></div>
+
+<main>
+
+  <form id="formulario" novalidate>
+
+    <section class="tarjeta">
+      <h1>Encuesta sobre las clases asincrónicas</h1>
+      <p>Queremos conocer tus experiencias, opiniones y dificultades sobre las clases asincrónicas.</p>
+      <p>Es anónima y tarda unos 3 minutos. Los campos con <span class="req">*</span> son obligatorios.</p>
+    </section>
+
+    <div id="aviso-general" class="aviso" hidden></div>
+
+    <!-- ============ 1. INFORMACIÓN GENERAL ============ -->
+    <div class="seccion"><h2>1. Información general</h2></div>
+
+    <div class="pregunta" id="carrera" data-requerida="si">
+      <p class="texto-titulo">¿Qué carrera o curso estás estudiando? <span class="req">*</span></p>
+      <div class="opciones">
+        <label class="opcion"><input type="radio" name="carrera" value="tecnicatura"><span>Tecnicatura Superior en Psicopedagogía</span></label>
+        <label class="opcion"><input type="radio" name="carrera" value="licenciatura"><span>Acompañamiento Terapéutico</span></label>
+        <label class="opcion"><input type="radio" name="carrera" value="ingenieria"><span>Tecnicatura en Desarrollo de Software</span></label>
+        <lab
+      <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu carrera o curso"></div>
+      <p class="error"></p>
+    </div>
+
+    <div class="pregunta" id="asincronicas" data-requerida="si">
+      <p class="texto-titulo">¿Tenés clases asincrónicas en tu carrera o curso? <span class="req">*</span></p>
+      <div class="opciones">
+        <label class="opcion"><input type="radio" name="asincronicas" value="si_varias"><span>Sí, en varias materias</span></label>
+        <label class="opcion"><input type="radio" name="asincronicas" value="si_algunas"><span>Sí, en algunas materias</span></label>
+        <label class="opcion"><input type="radio" name="asincronicas" value="no"><span>No, en ninguna</span></label>
+      </div>
+      <p class="error"></p>
+    </div>
+
+    <!-- ============ CAMINO SÍ ============ -->
+    <div id="grupo-si" hidden>
+
+      <div class="seccion"><h2>2. Experiencia con las clases asincrónicas</h2></div>
+
+      <div class="pregunta" id="conformidad" data-requerida="si">
+        <p class="texto-titulo">¿Qué tan conforme estás con la modalidad asincrónica? <span class="req">*</span></p>
+        <div class="escala">
+          <label class="opcion"><input type="radio" name="conformidad" value="1"><span>1 Nada</span></label>
+          <label class="opcion"><input type="radio" name="conformidad" value="2"><span>2</span></label>
+          <label class="opcion"><input type="radio" name="conformidad" value="3"><span>3</span></label>
+          <label class="opcion"><input type="radio" name="conformidad" value="4"><span>4</span></label>
+          <label class="opcion"><input type="radio" name="conformidad" value="5"><span>5 Muy</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="dificultades" data-requerida="si">
+        <p class="texto-titulo">¿Qué te cuesta más al estudiar por tu cuenta? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="dificultades" value="horarios"><span>Organizar mis horarios</span></label>
+          <label class="opcion"><input type="checkbox" name="dificultades" value="concentracion"><span>Mantener la concentración</span></label>
+          <label class="opcion"><input type="checkbox" name="dificultades" value="dudas"><span>Avanzar sin poder preguntar en el momento</span></label>
+          <label class="opcion"><input type="checkbox" name="dificultades" value="nada" data-exclusiva="true"><span>No me cuesta nada</span></label>
+          <label class="opcion"><input type="checkbox" name="dificultades" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="aprendizaje" data-requerida="si">
+        <p class="texto-titulo">¿Sentís que aprendés lo mismo que en una clase presencial? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="aprendizaje" value="menos"><span>Menos</span></label>
+          <label class="opcion"><input type="radio" name="aprendizaje" value="igual"><span>Igual</span></label>
+          <label class="opcion"><input type="radio" name="aprendizaje" value="mas"><span>Más</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="materiales" data-requerida="si">
+        <p class="texto-titulo">¿Los materiales y videos del profesor alcanzan para entender los temas? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="materiales" value="totalmente"><span>Sí, totalmente</span></label>
+          <label class="opcion"><input type="radio" name="materiales" value="mayormente"><span>Mayormente</span></label>
+          <label class="opcion"><input type="radio" name="materiales" value="no"><span>No, tengo que buscar material extra</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <div class="seccion"><h2>3. Opiniones personales</h2></div>
+
+      <div class="pregunta" id="gusta" data-requerida="si">
+        <p class="texto-titulo">¿Qué es lo que más te gusta de las clases asincrónicas? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="gusta" value="flexibilidad"><span>La flexibilidad de horario</span></label>
+          <label class="opcion"><input type="checkbox" name="gusta" value="pausar"><span>Poder pausar o repetir las explicaciones</span></label>
+          <label class="opcion"><input type="checkbox" name="gusta" value="ritmo"><span>Avanzar a mi propio ritmo</span></label>
+          <label class="opcion"><input type="checkbox" name="gusta" value="combinar"><span>Poder combinarlas con trabajo o familia</span></label>
+          <label class="opcion"><input type="checkbox" name="gusta" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="cambiar" data-requerida="si">
+        <p class="texto-titulo">¿Qué es lo que menos te gusta o qué cambiarías? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="cambiar" value="acompanamiento"><span>Falta de acompañamiento del profesor</span></label>
+          <label class="opcion"><input type="checkbox" name="cambiar" value="dudas"><span>Dificultad para resolver dudas</span></label>
+          <label class="opcion"><input type="checkbox" name="cambiar" value="videos"><span>Videos o material poco claros</span></label>
+          <label class="opcion"><input type="checkbox" name="cambiar" value="carga"><span>Mucha carga sin clases en vivo</span></label>
+          <label class="opcion"><input type="checkbox" name="cambiar" value="nada" data-exclusiva="true"><span>Nada, está bien así</span></label>
+          <label class="opcion"><input type="checkbox" name="cambiar" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="acompanamiento" data-requerida="si">
+        <p class="texto-titulo">¿Sentís que tenés suficiente acompañamiento de los profesores? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="acompanamiento" value="siempre"><span>Sí, siempre o casi siempre</span></label>
+          <label class="opcion"><input type="radio" name="acompanamiento" value="a_veces"><span>A veces</span></label>
+          <label class="opcion"><input type="radio" name="acompanamiento" value="casi_nunca"><span>Casi nunca</span></label>
+          <label class="opcion"><input type="radio" name="acompanamiento" value="nunca"><span>Nunca</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="modalidad" data-requerida="si">
+        <p class="texto-titulo">¿Qué modalidad preferís? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="modalidad" value="asincronica"><span>Asincrónica</span></label>
+          <label class="opcion"><input type="radio" name="modalidad" value="presencial"><span>Presencial</span></label>
+          <label class="opcion"><input type="radio" name="modalidad" value="virtual_vivo"><span>Virtual en vivo</span></label>
+          <label class="opcion"><input type="radio" name="modalidad" value="mixta"><span>Mixta (algo de cada una)</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="porque" data-requerida="si">
+        <p class="texto-titulo">¿Por qué? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="porque" value="flexibilidad"><span>Tengo flexibilidad de horario</span></label>
+          <label class="opcion"><input type="checkbox" name="porque" value="aprendo_vivo"><span>Aprendo mejor con el profe en vivo</span></label>
+          <label class="opcion"><input type="checkbox" name="porque" value="concentracion"><span>Me ayuda a concentrarme</span></label>
+          <label class="opcion"><input type="checkbox" name="porque" value="companeros"><span>Me gusta el contacto con compañeros</span></label>
+          <label class="opcion"><input type="checkbox" name="porque" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="mas_materias" data-requerida="si">
+        <p class="texto-titulo">¿Creés que esta modalidad debería implementarse en más materias? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="mas_materias" value="todas"><span>Sí, en todas</span></label>
+          <label class="opcion"><input type="radio" name="mas_materias" value="algunas"><span>Sí, en algunas</span></label>
+          <label class="opcion"><input type="radio" name="mas_materias" value="no"><span>No</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+    </div>
+
+    <!-- ============ CAMINO NO ============ -->
+    <div id="grupo-no" hidden>
+
+      <div class="seccion"><h2>2. Si no tenés clases asincrónicas</h2></div>
+
+      <div class="pregunta" id="n_motivo" data-requerida="si">
+        <p class="texto-titulo">¿Por qué no tenés clases asincrónicas? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="n_motivo" value="no_se_ofrecen"><span>En mi carrera no se ofrecen</span></label>
+          <label class="opcion"><input type="radio" name="n_motivo" value="presencial_por_naturaleza"><span>Mi carrera es presencial por su naturaleza</span></label>
+          <label class="opcion"><input type="radio" name="n_motivo" value="falta_equipo"><span>Por falta de equipo o conexión</span></label>
+          <label class="opcion"><input type="radio" name="n_motivo" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="n_quiere" data-requerida="si">
+        <p class="texto-titulo">¿Te gustaría que tu carrera o curso tuviera clases asincrónicas? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="n_quiere" value="si_todas"><span>Sí, en todas las materias</span></label>
+          <label class="opcion"><input type="radio" name="n_quiere" value="si_algunas"><span>Sí, en algunas materias</span></label>
+          <label class="opcion"><input type="radio" name="n_quiere" value="indiferente"><span>Me es indiferente</span></label>
+          <label class="opcion"><input type="radio" name="n_quiere" value="no"><span>No, prefiero presencial</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+      <!-- Solo si le gustaría tenerlas -->
+      <div class="pregunta" id="n_util" data-requerida="si" hidden>
+        <p class="texto-titulo">¿Qué te sería más útil de las clases asincrónicas? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="n_util" value="repetir"><span>Poder repetir las clases cuando quiera</span></label>
+          <label class="opcion"><input type="checkbox" name="n_util" value="horarios"><span>Organizar mis propios horarios</span></label>
+          <label class="opcion"><input type="checkbox" name="n_util" value="material"><span>Material escrito y ejercicios</span></label>
+          <label class="opcion"><input type="checkbox" name="n_util" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="pregunta" id="n_preocupa" data-requerida="si" hidden>
+        <p class="texto-titulo">¿Qué te preocuparía de estas clases? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="n_preocupa" value="acompanamiento"><span>Falta de acompañamiento del profesor</span></label>
+          <label class="opcion"><input type="checkbox" name="n_preocupa" value="aprender"><span>No aprender igual que en presencial</span></label>
+          <label class="opcion"><input type="checkbox" name="n_preocupa" value="disciplina"><span>Falta de disciplina propia</span></label>
+          <label class="opcion"><input type="checkbox" name="n_preocupa" value="nada" data-exclusiva="true"><span>No me preocupa nada</span></label>
+          <label class="opcion"><input type="checkbox" name="n_preocupa" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <!-- Solo si prefiere presencial -->
+      <div class="pregunta" id="n_presencial" data-requerida="si" hidden>
+        <p class="texto-titulo">¿Qué valorás de la clase presencial? <span class="req">*</span></p>
+        <p class="ayuda">Podés marcar varias.</p>
+        <div class="opciones">
+          <label class="opcion"><input type="checkbox" name="n_presencial" value="contacto"><span>Contacto directo con el profesor</span></label>
+          <label class="opcion"><input type="checkbox" name="n_presencial" value="preguntar"><span>Poder preguntar en el momento</span></label>
+          <label class="opcion"><input type="checkbox" name="n_presencial" value="grupo"><span>Compañeros y trabajo en grupo</span></label>
+          <label class="opcion"><input type="checkbox" name="n_presencial" value="otro"><span>Otro (especificar)</span></label>
+        </div>
+        <div class="otro-texto" hidden><input type="text" placeholder="Escribí tu respuesta"></div>
+        <p class="error"></p>
+      </div>
+
+      <div class="seccion"><h2>3. Hábitos de estudio</h2></div>
+
+      <div class="pregunta" id="n_videos" data-requerida="si">
+        <p class="texto-titulo">¿Usás videos o material online por tu cuenta para estudiar? <span class="req">*</span></p>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="n_videos" value="seguido"><span>Sí, seguido</span></label>
+          <label class="opcion"><input type="radio" name="n_videos" value="a_veces"><span>A veces</span></label>
+          <label class="opcion"><input type="radio" name="n_videos" value="nunca"><span>Casi nunca o nunca</span></label>
+        </div>
+        <p class="error"></p>
+      </div>
+
+    </div>
+
+    <div class="acciones">
+      <button type="button" class="secundario" id="limpiar">Borrar respuestas</button>
+      <button type="submit" id="enviar">Enviar</button>
+    </div>
+
+  </form>
+
+  <section class="tarjeta" id="gracias" hidden>
+    <h1>¡Gracias por responder!</h1>
+    <p>Tu respuesta quedó guardada.</p>
+    <div class="acciones">
+      <button type="button" id="otra">Responder otra vez</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
